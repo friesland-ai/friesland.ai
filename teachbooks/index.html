@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Friesland.AI Teachbooks - Open, interactieve lesboeken en modules over kunstmatige intelligentie voor onderwijs en praktijk in Friesland.">
+    <title>Teachbooks | Friesland.AI</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/logo_pompebled.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/teachbooks.css">
+</head>
+<body>
+    <!-- Background Glow Accents -->
+    <div class="bg-glow bg-glow-blue" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow-red" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="header-container container">
+            <a href="../" class="logo-link" aria-label="Friesland.AI home">
+                <img src="../assets/logo_pompebled.png" alt="Friesland.AI Logo" class="nav-logo">
+                <span class="logo-text">Friesland<span class="logo-dot">.</span><span class="logo-ai">AI</span></span>
+            </a>
+            <nav class="main-nav" aria-label="Hoofdmenu">
+                <ul class="nav-list">
+                    <li><a href="../#home" class="nav-link">Start</a></li>
+                    <li><a href="../#projecten" class="nav-link">Projecten</a></li>
+                    <li><a href="index.html" class="nav-link active">Teachbooks</a></li>
+                    <li><a href="../#over-ons" class="nav-link">Over Ons</a></li>
+                    <li><a href="../#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <a href="../#contact" class="btn btn-outline" id="header-cta-btn">Neem Contact Op</a>
+            </div>
+            <button class="mobile-nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Menu openen/sluiten">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Teachbooks Hero Section -->
+        <section class="teachbooks-hero">
+            <div class="container">
+                <div class="teachbooks-badge-wrapper reveal-on-scroll">
+                    <span class="badge badge-open-source">Open Educational Resources</span>
+                    <a href="https://teachbooks.io/our-team/" target="_blank" rel="noopener noreferrer" class="badge-teachbooks-link">
+                        Powered by TeachBooks.io &nearr;
+                    </a>
+                </div>
+                <h1 class="teachbooks-hero-title reveal-on-scroll">Friesland.AI Teachbooks</h1>
+                <p class="teachbooks-hero-lead font-pretty reveal-on-scroll delay-100">
+                    Interactieve, browser-gebaseerde online lesboeken en didactische modules over kunstmatige intelligentie. Speciaal samengesteld voor docenten, studenten en professionals in Friesland.
+                </p>
+
+                <!-- Search & Filters -->
+                <div class="catalog-controls reveal-on-scroll delay-200">
+                    <div class="search-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="search-icon" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                        <input type="search" id="teachbook-search" class="search-input" placeholder="Zoek op onderwerp of doelgroep..." aria-label="Zoeken in Teachbooks">
+                    </div>
+                    <div class="filter-pills" role="toolbar" aria-label="Filter boeken op categorie">
+                        <button type="button" class="filter-pill active" data-filter="all">Alle</button>
+                        <button type="button" class="filter-pill" data-filter="docenten">Docenten</button>
+                        <button type="button" class="filter-pill" data-filter="vo">VO</button>
+                        <button type="button" class="filter-pill" data-filter="mbo-hbo">MBO / HBO</button>
+                        <button type="button" class="filter-pill" data-filter="ethiek">Ethiek</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Catalog Grid -->
+        <section class="catalog-section container">
+            <div class="catalog-grid">
+                <!-- Book 1 -->
+                <article class="book-card reveal-on-scroll" data-categories="docenten vo mbo-hbo basis">
+                    <div class="book-card-top">
+                        <div class="book-icon-wrapper book-icon-blue" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="project-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                            </svg>
+                        </div>
+                        <span class="badge badge-soon">In ontwikkeling</span>
+                    </div>
+                    <div class="book-card-body">
+                        <span class="book-target-tag">Docenten • VO / MBO / HBO</span>
+                        <h2 class="book-title">Introductie AI in de Klas</h2>
+                        <p class="book-description font-pretty">
+                            Een didactische gids over de werking van taalmodellen, generatieve AI en praktische lesvormen. Bevat kant-en-klare werkvormen en discussieopdrachten.
+                        </p>
+                        <div class="book-meta-list">
+                            <div class="book-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                                <span>6 interactieve hoofdstukken</span>
+                            </div>
+                            <div class="book-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <span>Ca. 3-4 uur studietijd</span>
+                            </div>
+                        </div>
+                        <div class="book-card-footer">
+                            <a href="../#contact" class="btn btn-primary">Houd me op de hoogte</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Book 2 -->
+                <article class="book-card reveal-on-scroll delay-100" data-categories="docenten mbo-hbo gevorderd">
+                    <div class="book-card-top">
+                        <div class="book-icon-wrapper book-icon-red" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="project-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z" />
+                            </svg>
+                        </div>
+                        <span class="badge badge-soon">In ontwikkeling</span>
+                    </div>
+                    <div class="book-card-body">
+                        <span class="book-target-tag">MBO / HBO / Professionals</span>
+                        <h2 class="book-title">Prompt Engineering</h2>
+                        <p class="book-description font-pretty">
+                            Leer systematisch en doordacht prompten. Van zero-shot tot few-shot prompting en redeneringsketens (Chain of Thought), met concrete casussen.
+                        </p>
+                        <div class="book-meta-list">
+                            <div class="book-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                                <span>5 modules • 20+ templates</span>
+                            </div>
+                            <div class="book-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <span>Hands-on oefeningen</span>
+                            </div>
+                        </div>
+                        <div class="book-card-footer">
+                            <a href="../#contact" class="btn btn-primary">Houd me op de hoogte</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Book 3 -->
+                <article class="book-card reveal-on-scroll delay-200" data-categories="ethiek vo mbo-hbo">
+                    <div class="book-card-top">
+                        <div class="book-icon-wrapper book-icon-blue" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="project-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                            </svg>
+                        </div>
+                        <span class="badge badge-soon">In ontwikkeling</span>
+                    </div>
+                    <div class="book-card-body">
+                        <span class="book-target-tag">VO / MBO / Burgerschap</span>
+                        <h2 class="book-title">AI Ethiek & Privacy</h2>
+                        <p class="book-description font-pretty">
+                            Kritische blik op algoritmes, dataveiligheid, auteursrecht en de invloed van AI op de samenleving. Essentieel voor digitale burgerschapsvaardigheden.
+                        </p>
+                        <div class="book-meta-list">
+                            <div class="book-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                                <span>4 thematische casussen</span>
+                            </div>
+                            <div class="book-meta-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <span>Inclusief discussieleidraden</span>
+                            </div>
+                        </div>
+                        <div class="book-card-footer">
+                            <a href="../#contact" class="btn btn-primary">Houd me op de hoogte</a>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="no-results">
+                    <p>Geen Teachbooks gevonden voor deze zoekopdracht of filter.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TeachBooks Ecosystem Info for Educators -->
+        <section class="educator-section">
+            <div class="container">
+                <div class="educator-grid">
+                    <div class="educator-content reveal-on-scroll">
+                        <h2 class="section-title">Wat zijn TeachBooks?</h2>
+                        <p class="font-pretty">
+                            TeachBooks is een open-source initiatief gericht op het creëren van interactieve, open leermiddelen (OER) voor het onderwijs. Door gebruik te maken van open standaarden zoals Jupyter Book en webgebaseerde tools kunnen docenten eenvoudig lesmateriaal publiceren, aanpassen en delen.
+                        </p>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="feature-icon" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <div>
+                                    <strong>100% Open Access</strong>
+                                    <p class="font-pretty">Vrij toegankelijk voor iedereen: geen betaalmuren, direct te lezen in de browser.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="feature-icon" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <div>
+                                    <strong>Interactief en Didactisch</strong>
+                                    <p class="font-pretty">Verrijkt met interactieve code-voorbeelden, quizzen, en direct feedback voor studenten.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="feature-icon" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <div>
+                                    <strong>Makkelijk aan te passen</strong>
+                                    <p class="font-pretty">Docenten kunnen modules kopiëren, uitbreiden en afstemmen op hun eigen curriculum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="educator-card-box reveal-on-scroll delay-200">
+                        <h3 class="contact-title" style="font-size: var(--fs-xl);">Docent of Auteur?</h3>
+                        <p class="font-pretty" style="margin-block: var(--space-sm); font-size: var(--fs-sm);">
+                            Wil je meebouwen aan Friese AI-leermiddelen of een eigen Teachbook ontwikkelen voor jouw school of opleiding?
+                        </p>
+                        <a href="../#contact" class="btn btn-primary" style="width: 100%; margin-top: var(--space-sm);">Neem contact met ons op</a>
+                        <div style="margin-top: var(--space-md); text-align: center;">
+                            <a href="https://teachbooks.io/our-team/" target="_blank" rel="noopener noreferrer" class="btn-text" style="font-size: var(--fs-xs);">
+                                Lees meer over het TeachBooks team &nearr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">Friesland<span class="logo-dot">.</span><span class="logo-ai">AI</span></span>
+                <p class="footer-tagline">De toekomst van AI, geworteld in Friesland.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-nav-col">
+                    <h4 class="footer-col-title">Navigatie</h4>
+                    <ul class="footer-list">
+                        <li><a href="../#home">Start</a></li>
+                        <li><a href="../#projecten">Projecten</a></li>
+                        <li><a href="index.html">Teachbooks</a></li>
+                        <li><a href="../#over-ons">Over Ons</a></li>
+                        <li><a href="../#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h4 class="footer-col-title">Projecten</h4>
+                    <ul class="footer-list">
+                        <li><a href="../#projecten">AI Geletterdheidsscan</a></li>
+                        <li><a href="index.html">Teachbooks Hub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h4 class="footer-col-title">Contact</h4>
+                    <ul class="footer-list">
+                        <li><a href="mailto:info@friesland.ai" class="footer-email">info@friesland.ai</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p class="copyright">&copy; 2026 Friesland.AI. Alle rechten voorbehouden.</p>
+            <p class="credits">Gemaakt met zorg in Friesland</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/teachbooks.js"></script>
+</body>
+</html>
