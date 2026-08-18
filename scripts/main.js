@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Contact Form Submission Handling
     // TIP: Vervang 'YOUR_FORMSPREE_ID' door de ID die je krijgt na het aanmaken van een formulier op Formspree.io (bijv. 'mqkvpjpd')
-    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+    const FORMSPREE_ID = 'xeajpowk';
     
     const contactForm = document.getElementById('contact-form');
     const formFeedback = document.getElementById('form-feedback');
