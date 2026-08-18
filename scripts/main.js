@@ -90,6 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => activeNavObserver.observe(section));
 
     // 5. Contact Form Submission Handling
+    // TIP: Vervang 'YOUR_FORMSPREE_ID' door de ID die je krijgt na het aanmaken van een formulier op Formspree.io (bijv. 'mqkvpjpd')
+    const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+    
     const contactForm = document.getElementById('contact-form');
     const formFeedback = document.getElementById('form-feedback');
     
@@ -114,8 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Verzenden...';
             submitBtn.disabled = true;
             
-            // Simulate API call
-            setTimeout(() => {
+            const handleSuccess = () => {
                 submitBtn.textContent = originalBtnText;
                 submitBtn.disabled = false;
                 
@@ -134,8 +136,42 @@ document.addEventListener('DOMContentLoaded', () => {
                         formFeedback.style.opacity = '';
                     }, 300);
                 }, 8000);
-                
-            }, 1200);
+            };
+
+            const handleError = (message) => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                formFeedback.textContent = message || 'Er is een fout opgetreden. Probeer het later nog eens.';
+                formFeedback.className = 'form-feedback error';
+            };
+
+            if (FORMSPREE_ID === 'YOUR_FORMSPREE_ID') {
+                // Simulation fallback if Formspree is not configured yet
+                setTimeout(handleSuccess, 1200);
+            } else {
+                // Real Formspree AJAX request
+                fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        handleSuccess();
+                    } else {
+                        response.json().then(data => {
+                            if (data && data.errors) {
+                                handleError(data.errors.map(error => error.message).join(', '));
+                            } else {
+                                handleError('Er is een probleem opgetreden bij het verzenden.');
+                            }
+                        }).catch(() => handleError());
+                    }
+                })
+                .catch(() => handleError('Netwerkfout. Controleer je internetverbinding en probeer het opnieuw.'));
+            }
         });
     }
 
