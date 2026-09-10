@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="nl" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friesland.AI | AI-Geletterdheidsscan</title>
+  <meta name="description" content="Friesland.AI Geletterdheidsscan - Meet je AI-bekwaamheid als docent of onderwijsteam op basis van het UNESCO AI Competency Framework. De toekomst van AI, geworteld in Friesland.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/friesland-ai-logo.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Outfit', 'system-ui', '-apple-system', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#244994',
+              50: '#eff4fa',
+              100: '#dbe6f6',
+              200: '#bcd2ee',
+              300: '#92b5e2',
+              400: '#6192d2',
+              500: '#3d72c1',
+              600: '#244994',
+              700: '#1c3b77',
+              800: '#19315f',
+              900: '#172b4f',
+              950: '#0f1a30'
+            },
+            pompebled: {
+              DEFAULT: '#c73326',
+              50: '#fdf2f1',
+              100: '#fbe2e0',
+              200: '#f7cac7',
+              300: '#f0a6a0',
+              400: '#e4756c',
+              500: '#d74c41',
+              600: '#c73326',
+              700: '#ad2b20',
+              800: '#8f261c',
+              900: '#77241c'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons & Chart.js -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Stylesheet (Friesland.AI design tokens & components) -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-full flex flex-col bg-white dark:bg-[#0b111e] text-slate-800 dark:text-slate-100 transition-colors duration-200 friesland-bg relative">
+
+  <!-- Background Ambient Glows (Signature Friesland.AI) -->
+  <div class="bg-glow bg-glow-blue" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-red" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       TOP NAVIGATION BAR
+       ========================================== -->
+  <header class="site-header glass-nav border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <button type="button" class="go-home-btn flex items-center gap-3 text-left group cursor-pointer" aria-label="Friesland.AI Home">
+        <img src="assets/friesland-ai-logo.png" alt="Friesland.AI Logo" class="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+        <div class="flex items-center gap-2.5">
+          <span class="logo-text text-xl sm:text-2xl text-slate-900 dark:text-white">
+            Friesland<span class="logo-dot">.</span><span class="logo-ai">AI</span>
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wide bg-[#eff4fa] text-[#244994] dark:bg-[#15233d] dark:text-[#8bb1ff] border border-[#bcd2ee] dark:border-[#243c68]">
+            Scan
+          </span>
+        </div>
+      </button>
+
+      <!-- Nav Actions -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Teachbooks Link -->
+        <a href="https://friesland.ai/teachbooks/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-[#244994] dark:hover:text-[#8bb1ff] hover:bg-slate-100 dark:hover:bg-slate-800/60 transition"
+          title="Bekijk de Friesland.AI Teachbooks Hub">
+          <i data-lucide="book" class="w-3.5 h-3.5 text-[#244994] dark:text-[#8bb1ff]"></i>
+          <span>Teachbooks Hub</span>
+        </a>
+
+        <!-- UNESCO Framework External Link -->
+        <a href="https://unesdoc.unesco.org/ark:/48223/pf0000391104" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition"
+          title="Bekijk het officiële UNESCO AI Competency Framework for Teachers">
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#244994] dark:text-[#8bb1ff]"></i>
+          <span>UNESCO AI CFT</span>
+        </a>
+
+        <!-- Directe link naar Friesland.ai hoofdsite -->
+        <a href="https://www.friesland.ai" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#244994] dark:text-[#8bb1ff] hover:underline"
+          title="Bezoek www.friesland.ai">
+          <span class="w-2 h-2 rounded-full bg-[#c73326]"></span>
+          <span>friesland.ai</span>
+        </a>
+
+        <!-- Theme Toggle -->
+        <button type="button" 
+          id="theme-toggle-btn" 
+          aria-label="Wissel donker/licht thema"
+          class="p-2.5 rounded-xl text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition cursor-pointer">
+          <i data-lucide="moon" id="theme-toggle-icon" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTENT CONTAINER
+       ========================================== -->
+  <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- ========================================================
+         VIEW 1: INTRODUCTIE
+         ======================================================== -->
+    <section id="view-intro" class="space-y-16 animate-fade-in">
+      
+      <!-- Hero Section Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-2 sm:pt-6">
+        
+        <!-- Left: Hero Content -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#eff4fa] dark:bg-[#15233d] text-[#244994] dark:text-[#8bb1ff] border border-[#bcd2ee] dark:border-[#243c68]">
+            <span class="w-2 h-2 rounded-full bg-[#c73326] animate-pulse"></span>
+            <span>De toekomst van AI, geworteld in Friesland</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.12]">
+            Bouwen aan <span class="text-[#244994] dark:text-[#8bb1ff]">AI-Geletterdheid</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
+            Meet je huidige AI-bekwaamheid als docent of onderwijsteam aan de hand van het officiële <strong>UNESCO AI Competency Framework</strong>. Krijg binnen 5 minuten een persoonlijk spindiagram, inzicht in je competentieniveau en direct toepasbare handvatten voor de lespraktijk en de regio.
+          </p>
+
+          <!-- Hervat melding indien eerdere voortgang aanwezig -->
+          <div id="resume-container" class="hidden p-4 rounded-2xl bg-[#eff4fa] dark:bg-[#131c2e] border border-[#bcd2ee] dark:border-[#243c68] text-left max-w-xl flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <i data-lucide="clock" class="w-5 h-5 text-[#244994] dark:text-[#8bb1ff] shrink-0"></i>
+              <div>
+                <div class="text-xs font-bold text-slate-900 dark:text-white">Eerdere voortgang gevonden</div>
+                <div class="text-xs text-slate-600 dark:text-slate-300">
+                  Je hebt <span id="resume-count" class="font-bold text-[#244994] dark:text-[#8bb1ff]"></span> vragen ingevuld.
+                </div>
+              </div>
+            </div>
+            <button type="button" id="resume-scan-btn" class="px-4 py-2 rounded-xl bg-[#244994] hover:bg-[#1c3b77] text-white text-xs font-bold transition shadow-sm shrink-0 cursor-pointer">
+              Hervat Scan
+            </button>
+          </div>
+
+          <!-- Primary Actions -->
+          <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button type="button" id="start-scan-btn" class="btn btn-primary px-8 py-4 rounded-2xl text-base font-bold shadow-lg shadow-[#244994]/25 hover:-translate-y-0.5 transition cursor-pointer flex items-center justify-center gap-3">
+              <span>Start de Scan (15 stellingen)</span>
+              <i data-lucide="arrow-right" class="w-5 h-5 text-white"></i>
+            </button>
+            <button type="button" data-modal-target="modal-unesco-info" class="btn btn-secondary px-6 py-4 rounded-2xl text-base font-bold transition cursor-pointer flex items-center justify-center gap-2">
+              <i data-lucide="book-open" class="w-4 h-4 text-[#244994] dark:text-[#8bb1ff]"></i>
+              <span>Over het UNESCO Kader</span>
+            </button>
+          </div>
+
+          <!-- Badges & Features -->
+          <div class="pt-3 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="clock-3" class="w-4 h-4 text-[#244994] dark:text-[#8bb1ff]"></i>
+              Invulduur: ca. 5 minuten
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-4 h-4 text-[#244994] dark:text-[#8bb1ff]"></i>
+              100% Privacyvriendelijk (lokaal)
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="award" class="w-4 h-4 text-[#c73326]"></i>
+              UNESCO Mondiale Standaard (2024)
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: 3D Visual Hero Card (Signature Friesland.AI) -->
+        <div class="lg:col-span-5 flex justify-center items-center">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <img src="assets/friesland-ai-logo.png" alt="Friesland.AI Logo" class="hero-logo-img">
+              <div class="hero-card-glow"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Overzicht van de 5 UNESCO Aspecten -->
+      <div id="aspecten" class="space-y-8 pt-4">
+        <div class="text-center max-w-3xl mx-auto space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#244994] dark:text-[#8bb1ff]">
+            Onderwijsinnovatie & Kwaliteit
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            De 5 UNESCO AI Competentie Aspecten
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Het UNESCO AI Competency Framework structureert docentbekwaamheid langs vijf onderling verbonden pijlers:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Aspect 1 -->
+          <article class="bg-white dark:bg-[#131c2e] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">
+            <div class="card-accent-line card-accent-blue"></div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="icon-box icon-blue">
+                    <i data-lucide="user-check" class="w-5 h-5"></i>
+                  </div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-[#eff4fa] text-[#244994] dark:bg-[#15233d] dark:text-[#8bb1ff] border border-[#bcd2ee] dark:border-[#243c68]">
+                    Aspect 1
+                  </span>
+                </div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">
+                  Mensgerichte denkwijze
+                </h3>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-2">
+                  Human-Centred Mindset
+                </span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Menselijke regie, vakmanschap en kritische autonomie behouden in het beroep. Gelijke kansen en welzijn van studenten bewaken.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+                Focus: Beroepsidentiteit & menselijk contact
+              </div>
+            </div>
+          </article>
+
+          <!-- Aspect 2 -->
+          <article class="bg-white dark:bg-[#131c2e] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">
+            <div class="card-accent-line card-accent-red"></div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="icon-box icon-red">
+                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                  </div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-[#fdf2f1] text-[#c73326] dark:bg-[#321715] dark:text-[#ff9288] border border-[#fad4d1] dark:border-[#58211d]">
+                    Aspect 2
+                  </span>
+                </div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">
+                  Ethiek van AI
+                </h3>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-2">
+                  Ethics of AI
+                </span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Ethische integriteit bij beroepsproducten, privacy (AVG) van studenten & stagebedrijven, bias en intellectueel eigendom.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+                Focus: Integriteit, privacy & verantwoording
+              </div>
+            </div>
+          </article>
+
+          <!-- Aspect 3 -->
+          <article class="bg-white dark:bg-[#131c2e] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">
+            <div class="card-accent-line card-accent-blue"></div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="icon-box icon-blue">
+                    <i data-lucide="cpu" class="w-5 h-5"></i>
+                  </div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-[#eff4fa] text-[#244994] dark:bg-[#15233d] dark:text-[#8bb1ff] border border-[#bcd2ee] dark:border-[#243c68]">
+                    Aspect 3
+                  </span>
+                </div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">
+                  Fundamenten & Toepassingen
+                </h3>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-2">
+                  AI Foundations & Applications
+                </span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Begrip van LLM’s, hallucineren, promptvaardigheid en het effectief selecteren van veilige AI-tools voor de vakopleiding.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+                Focus: Technische principes & doeltreffend prompten
+              </div>
+            </div>
+          </article>
+
+          <!-- Aspect 4 -->
+          <article class="bg-white dark:bg-[#131c2e] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col">
+            <div class="card-accent-line card-accent-red"></div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="icon-box icon-red">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                  </div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-[#fdf2f1] text-[#c73326] dark:bg-[#321715] dark:text-[#ff9288] border border-[#fad4d1] dark:border-[#58211d]">
+                    Aspect 4
+                  </span>
+                </div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">
+                  AI-pedagogie in het Onderwijs
+                </h3>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-2">
+                  AI Pedagogy
+                </span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Realistische beroepscasussen ontwerpen, differentiëren naar studentniveau en formatieve feedback geven met behulp van AI.
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+                Focus: Didactiek, differentiatie & toetsing
+              </div>
+            </div>
+          </article>
+
+          <!-- Aspect 5 -->
+          <article class="bg-white dark:bg-[#131c2e] rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col md:col-span-2 lg:col-span-2">
+            <div class="card-accent-line card-accent-gradient"></div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="icon-box icon-blue">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-[#244994] dark:text-[#8bb1ff]"></i>
+                  </div>
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-[#eff4fa] text-[#244994] dark:bg-[#15233d] dark:text-[#8bb1ff] border border-[#bcd2ee] dark:border-[#243c68]">
+                    Aspect 5
+                  </span>
+                </div>
+                <h3 class="font-bold text-slate-900 dark:text-white text-base mb-1">
+                  Professionele Ontwikkeling & BPV
+                </h3>
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wide block mb-2">
+                  AI for Professional Development
+                </span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Werkdruk verlagen bij administratie, kennisdelen in het docententeam en proactief afstemmen met de regionale beroepspraktijk (BPV en stagebedrijven in Friesland).
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
+                Focus: Werkdrukverlaging, teamleren & regionale aansluiting
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VIEW 2: DE SCAN (VRAGENLIJST)
+         ======================================================== -->
+    <section id="view-scan" class="hidden space-y-8 animate-fade-in">
+      
+      <!-- Top Status & Progress Bar -->
+      <div class="bg-white dark:bg-[#131c2e] rounded-2xl p-5 sm:p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
+          <div class="flex items-center gap-3">
+            <button type="button" class="go-home-btn p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer" title="Terug naar overzicht">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
+            <div>
+              <span id="scan-progress-text" class="text-sm font-bold text-slate-900 dark:text-white">
+                0 van de 15 stellingen ingevuld
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="text-right">
+              <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Voortgang</div>
+              <div id="scan-progress-percentage" class="text-base font-extrabold text-[#244994] dark:text-[#8bb1ff]">0%</div>
+            </div>
+            <button type="button" class="reset-scan-btn text-xs text-slate-400 hover:text-[#c73326] transition px-2 py-1 cursor-pointer">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Bar (Friesland.AI gradient) -->
+        <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div id="scan-progress-bar" class="h-full bg-gradient-to-r from-[#244994] via-[#3862b8] to-[#c73326] rounded-full transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Current Aspect Header -->
+      <div id="current-aspect-header" class="pt-2">
+        <!-- Dynamisch gevuld via app.js -->
+      </div>
+
+      <!-- Questions List for Current Aspect -->
+      <div id="questions-container" class="space-y-6">
+        <!-- Dynamisch gevuld via app.js -->
+      </div>
+
+      <!-- Aspect Nav Tabs (Onderkant) -->
+      <div class="space-y-2 pt-4">
+        <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+          Navigeer tussen de 5 UNESCO-Aspecten:
+        </div>
+        <div id="aspect-nav-tabs" class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
+          <!-- Dynamisch gevuld via app.js -->
+        </div>
+      </div>
+
+      <!-- Navigation Footer -->
+      <div id="scan-nav-footer">
+        <!-- Dynamisch gevuld via app.js -->
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VIEW 3: RESULTATEN & ANALYSE DASHBOARD
+         ======================================================== -->
+    <section id="view-results" class="hidden space-y-10 animate-fade-in">
+      
+      <!-- Top Action Bar -->
+      <div class="no-print flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-[#131c2e] p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <button type="button" class="go-home-btn inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-[#244994] dark:hover:text-[#8bb1ff] cursor-pointer">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span>Terug naar Overzicht</span>
+        </button>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button type="button" class="copy-summary-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-semibold transition cursor-pointer">
+            <i data-lucide="copy" class="w-4 h-4 text-[#244994] dark:text-[#8bb1ff]"></i>
+            <span>Kopieer Samenvatting</span>
+          </button>
+          <button type="button" class="print-report-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#244994] hover:bg-[#1c3b77] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#244994]/20 transition cursor-pointer">
+            <i data-lucide="printer" class="w-4 h-4 text-white"></i>
+            <span>Opslaan / Print als PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile Summary Banner -->
+      <div id="profile-summary-container">
+        <!-- Dynamisch gevuld via app.js -->
+      </div>
+
+      <!-- Radar Chart & Visual Inzichten -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Radar Chart Container -->
+        <div class="lg:col-span-7 bg-white dark:bg-[#131c2e] rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-2">
+              <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white font-display">
+                UNESCO Spindiagram (Radar)
+              </h3>
+              <span class="text-xs font-bold text-slate-600 dark:text-slate-300 bg-[#eff4fa] dark:bg-[#15233d] text-[#244994] dark:text-[#8bb1ff] px-3 py-1 rounded-full border border-[#bcd2ee] dark:border-[#243c68]">
+                Schaal 1.0 - 5.0
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+              Jouw profiel (Fries Blauw) afgezet tegen de 5 UNESCO-dimensies en het streefniveau 'Gevorderd' 4.0 (Pompeblêd Rood).
+            </p>
+          </div>
+
+          <div class="chart-container-radar my-auto py-2">
+            <canvas id="results-radar-chart"></canvas>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+            Beweeg over de punten voor de gedetailleerde score en het UNESCO-niveau per aspect.
+          </div>
+        </div>
+
+        <!-- UNESCO Niveaumatrix Uitleg -->
+        <div class="lg:col-span-5 bg-white dark:bg-[#131c2e] rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h3 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2 font-display">
+            <i data-lucide="layers" class="w-5 h-5 text-[#244994] dark:text-[#8bb1ff]"></i>
+            <span>UNESCO Niveaumatrix</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Het UNESCO AI Competency Framework structureert docentvaardigheden langs drie progressieniveaus:
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <!-- Niveau 1 -->
+            <div class="p-3.5 rounded-2xl bg-[#eff4fa] dark:bg-[#15233d] border border-[#bcd2ee] dark:border-[#243c68] text-xs">
+              <div class="font-bold text-[#244994] dark:text-[#8bb1ff] flex items-center justify-between mb-1">
+                <span>Niveau 1: Begrijpen (Acquire)</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-white dark:bg-[#0b111e] text-[#244994] dark:text-[#8bb1ff]">1.0 - 2.4</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Basisbegrip van concepten, ethische risico's en het verkennen van handige AI-tools voor het eigen vak.
+              </p>
+            </div>
+
+            <!-- Niveau 2 -->
+            <div class="p-3.5 rounded-2xl bg-white dark:bg-[#19253d] border border-[#244994]/40 text-xs">
+              <div class="font-bold text-[#244994] dark:text-white flex items-center justify-between mb-1">
+                <span>Niveau 2: Toepassen / Verdiepen (Deepen)</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#244994] text-white">2.5 - 3.7</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Doelgerichte integratie in de lespraktijk, differentiatie naar studentniveaus, en heldere ethische afspraken in de klas.
+              </p>
+            </div>
+
+            <!-- Niveau 3 -->
+            <div class="p-3.5 rounded-2xl bg-[#fdf2f1] dark:bg-[#201416] border border-[#fad4d1] dark:border-[#522421] text-xs">
+              <div class="font-bold text-[#c73326] dark:text-[#ff9288] flex items-center justify-between mb-1">
+                <span>Niveau 3: Innoveren & Leiden (Create)</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#c73326] text-white">3.8 - 5.0</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Herontwerpen van onderwijs en toetsing, coachen van collega's en strategisch afstemmen met het regionale werkveld/BPV in Friesland.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aspect Detail Cards Breakdown -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white font-display">
+            Gedetailleerde Analyse per UNESCO Aspect
+          </h3>
+        </div>
+        <div id="results-aspects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamisch gevuld via app.js -->
+        </div>
+      </div>
+
+      <!-- Einde Acties -->
+      <div class="no-print pt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 dark:border-slate-800">
+        <button type="button" class="reset-scan-btn inline-flex items-center gap-2 text-xs font-semibold text-[#c73326] hover:underline transition cursor-pointer">
+          <i data-lucide="trash-2" class="w-4 h-4"></i>
+          <span>Scan Opnieuw Doen (Wissen)</span>
+        </button>
+
+        <div class="flex items-center gap-3">
+          <button type="button" class="copy-summary-btn inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-semibold transition cursor-pointer">
+            <i data-lucide="copy" class="w-4 h-4 text-[#244994] dark:text-[#8bb1ff]"></i>
+            <span>Kopieer Samenvatting</span>
+          </button>
+          <button type="button" class="print-report-btn inline-flex items-center gap-1.5 px-6 py-3 rounded-xl bg-[#244994] hover:bg-[#1c3b77] text-white text-sm font-bold shadow-md shadow-[#244994]/20 transition cursor-pointer">
+            <i data-lucide="printer" class="w-4 h-4 text-white"></i>
+            <span>Download PDF Eindrapport</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       OFFICIAL FRIESLAND.AI FOOTER
+       ========================================== -->
+  <footer class="no-print mt-auto site-footer border-t border-slate-800 bg-[#0f172a] text-slate-300 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+        <!-- Brand Column -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <img src="assets/friesland-ai-logo.png" alt="Friesland.AI Logo" class="h-9 w-auto object-contain">
+            <span class="font-display font-extrabold text-2xl text-white">
+              Friesland<span class="text-[#244994]">.</span><span class="text-[#c73326]">AI</span>
+            </span>
+          </div>
+          <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+            De toekomst van AI, geworteld in Friesland. Wij maken kunstmatige intelligentie begrijpelijk, toegankelijk en didactisch verantwoord voor onderwijs en bedrijven.
+          </p>
+          <div class="flex items-center gap-3 pt-1">
+            <a href="https://www.friesland.ai" target="_blank" rel="noopener noreferrer" class="text-xs text-[#8bb1ff] hover:underline flex items-center gap-1">
+              <span>www.friesland.ai</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <span class="text-slate-600">&bull;</span>
+            <a href="mailto:info@friesland.ai" class="text-xs text-slate-400 hover:text-white transition">
+              info@friesland.ai
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigatie Links -->
+        <div class="md:col-span-2 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Navigatie</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><button type="button" class="go-home-btn hover:text-white transition cursor-pointer">Start Scan</button></li>
+            <li><a href="#aspecten" class="hover:text-white transition">5 Aspecten</a></li>
+            <li><button type="button" data-modal-target="modal-unesco-info" class="hover:text-white transition cursor-pointer">UNESCO Kader</button></li>
+            <li><button type="button" data-modal-target="modal-privacy-info" class="hover:text-white transition cursor-pointer">Privacy & Data</button></li>
+          </ul>
+        </div>
+
+        <!-- Projecten Links -->
+        <div class="md:col-span-2 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Projecten</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><span class="text-white font-medium">AI Geletterdheidsscan</span></li>
+            <li><a href="https://friesland.ai/teachbooks/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Teachbooks Hub</a></li>
+            <li><a href="https://www.friesland.ai#projecten" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Alle Projecten</a></li>
+          </ul>
+        </div>
+
+        <!-- Framework Info -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">UNESCO Standaard</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Gebaseerd op het <em>UNESCO AI Competency Framework for Teachers (2024)</em>.
+          </p>
+          <a href="https://unesdoc.unesco.org/ark:/48223/pf0000391104" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-[#8bb1ff] hover:underline">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>Bekijk origineel UNESCO rapport</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 Friesland.AI. Alle rechten voorbehouden.</p>
+        <p class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#c73326]"></span>
+          <span>Gemaakt met zorg in Friesland</span>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL: OVER UNESCO AI CFT
+       ========================================== -->
+  <div id="modal-unesco-info" class="modal-container hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#131c2e] rounded-3xl p-6 sm:p-8 max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-[#244994] dark:text-[#8bb1ff] font-bold text-sm">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          <span>UNESCO AI Competency Framework for Teachers (2024)</span>
+        </div>
+        <button type="button" data-modal-close class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <h3 class="text-xl font-black text-slate-900 dark:text-white font-display">
+        De Mondiale Standaard voor AI in het Onderwijs
+      </h3>
+
+      <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
+        <p>
+          In 2024 lanceerde UNESCO het officiële <strong>AI Competency Framework for Teachers (AI CFT)</strong> om docenten, onderwijsteams en opleiders wereldwijd voor te bereiden op verantwoorde AI-integratie.
+        </p>
+        <p>
+          Het raamwerk is opgebouwd rond <strong>5 dimensies</strong>:
+        </p>
+        <ol class="list-decimal list-inside space-y-1 font-medium text-slate-900 dark:text-white">
+          <li><strong>Mensgerichte denkwijze:</strong> Menselijke regie en welzijn staan te allen tijde centraal.</li>
+          <li><strong>Ethiek van AI:</strong> Verantwoordelijkheid, privacy, bias en transparantie.</li>
+          <li><strong>Fundamenten en toepassingen:</strong> Begrijpen van technologie, beperkingen en tools.</li>
+          <li><strong>AI-pedagogie:</strong> Lesontwerp, differentiatie en formatieve toetsing.</li>
+          <li><strong>Professionele ontwikkeling:</strong> Levenslang leren, collegiale samenwerking en regionale afstemming.</li>
+        </ol>
+        <p>
+          Deze Friesland.AI scan vertaalt deze 15 kerncompetenties direct naar praktische leersituaties, met speciale aandacht voor beroepspraktijkvorming (BPV), stagebedrijven en werkdrukverlaging in Friesland.
+        </p>
+      </div>
+
+      <div class="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800">
+        <a href="https://unesdoc.unesco.org/ark:/48223/pf0000391104" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-[#244994] dark:text-[#8bb1ff] hover:underline">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span>Open officieel UNESCO PDF rapport</span>
+        </a>
+        <button type="button" data-modal-close class="px-5 py-2.5 rounded-xl bg-[#244994] hover:bg-[#1c3b77] text-white font-bold text-xs transition cursor-pointer">
+          Sluiten
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: PRIVACY & VEILIGHEID
+       ========================================== -->
+  <div id="modal-privacy-info" class="modal-container hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#131c2e] rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-[#244994] dark:text-[#8bb1ff] font-bold text-sm">
+          <i data-lucide="shield-check" class="w-4 h-4"></i>
+          <span>Privacy & Lokale Opslag</span>
+        </div>
+        <button type="button" data-modal-close class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <h3 class="text-lg font-black text-slate-900 dark:text-white font-display">
+        Geen externe gegevensopslag
+      </h3>
+
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        Deze scan draait volledig <strong>client-side</strong> in jouw eigen webbrowser. Jouw antwoorden worden uitsluitend tijdelijk bewaard in de lokale opslag (LocalStorage) van je apparaat om voortgang niet te verliezen. Er wordt geen persoonlijke data verzonden naar externe servers of databases.
+      </p>
+
+      <div class="pt-4 flex justify-end border-t border-slate-100 dark:border-slate-800">
+        <button type="button" data-modal-close class="px-5 py-2.5 rounded-xl bg-[#244994] hover:bg-[#1c3b77] text-white font-bold text-xs transition cursor-pointer">
+          Begrepen
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript App Logic (Self-contained, CORS-proof voor file://) -->
+  <script src="js/app.js"></script>
+</body>
+</html>

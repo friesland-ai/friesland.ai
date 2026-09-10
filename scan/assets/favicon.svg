@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="frieslandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#244994" />
+      <stop offset="100%" stop-color="#18336c" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Rounded Square -->
+  <rect width="100" height="100" rx="24" fill="url(#frieslandGrad)" />
+  <rect x="2" y="2" width="96" height="96" rx="22" stroke="#ffffff" stroke-width="2" stroke-opacity="0.15" />
+  
+  <!-- Stylized Friesland neural circuitry & pompeblêd red accent -->
+  <path d="M26 68 L42 52 L62 52 L74 38" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+  <path d="M42 52 L42 32 L58 20" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7" />
+  <path d="M62 52 L72 68" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+  
+  <!-- AI Nodes -->
+  <circle cx="26" cy="68" r="4.5" fill="#c73326" stroke="#ffffff" stroke-width="2" />
+  <circle cx="42" cy="52" r="4" fill="#ffffff" />
+  <circle cx="62" cy="52" r="4" fill="#ffffff" />
+  <circle cx="74" cy="38" r="5" fill="#c73326" stroke="#ffffff" stroke-width="2" />
+  <circle cx="42" cy="32" r="3.5" fill="#ffffff" />
+  <circle cx="58" cy="20" r="4.5" fill="#c73326" stroke="#ffffff" stroke-width="2" />
+  <circle cx="72" cy="68" r="4" fill="#ffffff" />
+
+  <!-- Pompeblêd Red Heart/Leaf Accent in Center-Top -->
+  <path d="M50 36 C45 30, 36 34, 38 41 C40 47, 50 54, 50 54 C50 54, 60 47, 62 41 C64 34, 55 30, 50 36 Z" fill="#c73326" opacity="0.95" />
+</svg>
